@@ -23,7 +23,7 @@ DEATHS=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | gr
 $SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' |$SED -n "/COVID-19StatewiseStatus/ , /Stateswisedistributionissubjecttofurtherverificationandreconciliation/p" > $DATAFILE
 
 echo -e "\t\t\t+---------------------------------------------------+"
-echo -e "\t\t\t\t\t Convin-19 Dashboard"
+echo -e "\t\t\t\t\t Covid-19 Dashboard"
 echo -e "\t\t\t\t\t\t\033[0;31mIN\033[0mD\033[0m\033[0;32mIA\033[0m"
 echo -e "\t\t\t+---------------------------------------------------+"
 echo
@@ -52,7 +52,15 @@ done
 column -s ',' -t $OUTPUTFILE
 echo
 echo
-echo -e "\033[0;35mFor More Update:\033[0m"
-echo -e "Kindly Use \033[0;32mhttps://www.mohfw.gov.in/\033[0m For More Information."
+echo -e "\033[0;35mHelpful Links:\033[0m"
+echo -e "- MINISTRY OF HEALTH AND FAMILY WELFARE, GOV. OF INDIA  \033[0;32mhttps://www.mohfw.gov.in/\033[0m"
+echo -e "- HELPLINE NUMBERS [BY STATE]  \033[0;32mhttps://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf\033[0m"
+echo -e "- WORLD HEALTH ORGANIZATION [WHO]  \033[0;32mhttps://www.who.int/emergencies/diseases/novel-coronavirus-2019\033[0m"
+echo -e "- CENTERS FOR DISEASE CONTROL AND PREVENTION [CDC]  \033[0;32mhttps://www.cdc.gov/coronavirus/2019-ncov/faq.html\033[0m"
+echo -e "- CROWDSOURCED LIST OF RESOURCES & ESSENTIALS FROM ACROSS INDIA  \033[0;32mhttps://bit.ly/covid19resourcelist\033[0m"
+echo 
+echo -e "\033[0;35mReference Links:\033[0m"
+echo -e "- COVID-19 GLOBAL TRACKER  \033[0;32mhttps://coronavirus.thebaselab.com/\033[0m"
+echo -e "- COVID19INDIA.ORG  \033[0;32mhttps://www.covid19india.org/\033[0m"
 echo -e ":=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--: \033[0;32mhttps://krishnabagal.com\033[0m :--=-=-=-=-=-:"
 >$OUTPUTFILE
