@@ -6,7 +6,7 @@ Let’s see a simple bash script to demonstrate the state-wise corona virus case
 To run below script use,
 
 ```
-# bash getdata_convin19.sh	
+# bash getdata_convid19.sh	
 ```
 Then you will get an simple state-wise dashboard.
 
