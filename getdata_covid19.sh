@@ -1,6 +1,6 @@
 #!/bin/bash
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==#
-# Script Name: getdata_convid19.sh
+# Script Name: getdata_covid19.sh
 # Date: Apr 13th, 2020.
 # Modified: NA.
 # Versioning: NA
