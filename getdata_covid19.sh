@@ -16,9 +16,9 @@ OUTPUTFILE="/tmp/outputdata"
 
 $WGET https://www.mohfw.gov.in -O $INDEXFILE > /dev/null 2>&1
 LASTUPDATEEDDATE=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -i "COVID-19INDIAason" |cut -d: -f2,3)
-ACTIVECASES=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -B1 -i "ActiveCases" |head -1)
-CURED=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -B1 -i "Cured/Discharged" |head -1)
-DEATHS=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -B1 -i "Deaths" |head -1)
+ACTIVECASES=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -iA1 Active  |grep -i "&nbsp;&nbsp" |tail -1 |cut -d"&" -f1)
+CURED=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -iA1 Discharged  |grep -i "&nbsp;&nbsp" |tail -1 |cut -d"&" -f1)
+DEATHS=$($SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' | grep -iA1 Deaths  |grep -i "&nbsp;&nbsp" |tail -1 |cut -d"&" -f1)
 
 $SED -e 's/<[^>]*>//g' $INDEXFILE |$TR -d "[:blank:]"|sed  '/^$/d' |$SED -n "/COVID-19StatewiseStatus/ , /Stateswisedistributionissubjecttofurtherverificationandreconciliation/p" > $DATAFILE
 
@@ -34,14 +34,14 @@ echo -e "\033[0;36mHelpline Email ID :\033[0m ncov2019@gov.in"
 echo
 echo
 echo -e "\t=========================================================================="
-echo -e "\t\t \033[0;35mActive Cases:\033[0m $ACTIVECASES\033[0m  \033[0;35mCured/Discharged:\033[0m $CURED\033[0m \033[0;35mDeaths:\033[0m \033[0;31m$DEATHS\033[0m"
+echo -e "\t\t \033[0;35mActive Cases:\033[0m $ACTIVECASES\033[0m  \033[0;35mCured/Discharged:\033[0;32m $CURED\033[0m \033[0;35mDeaths:\033[0m \033[0;31m$DEATHS\033[0m"
 echo -e "\t=========================================================================="
 
 echo
 echo
 echo -e "|\033[0;34mName of State / UT\033[0m,|\033[0;34mTotal Confirmed Cases,\033[0m|\033[0;34mCured-Discharged-Migrated,\033[0m|\033[0;34mDeath\033[0m" >>$OUTPUTFILE
 echo -e "------------------------------------,--------------------------------,---------------------" >>$OUTPUTFILE
-for a in Andhra Andaman Arunachal Assam Bihar Chandigarh Chhattisgarh Delhi Goa Gujarat Haryana Himachal Jammu Jharkhand Karnataka Kerala Ladakh Madhya Maharashtra Manipur Mizoram Nagaland Odisha Puducherry Punjab Rajasthan Tamil Telengana Tripura Uttarakhand UttarPradesh Bengal
+for a in Andhra Andaman Arunachal Assam Bihar Chandigarh Chhattisgarh Delhi Diu Goa Gujarat Haryana Himachal Jammu Jharkhand Karnataka Kerala Ladakh Madhya Maharashtra Manipur Mizoram Meghalaya Nagaland Odisha Puducherry Punjab Rajasthan Sikkim Tamil Telangana Tripura Uttarakhand UttarPradesh Bengal
 do
 STATENAME=$(cat $DATAFILE |grep -A3 -i  $a |sed "s/$/:/g" |tr -d "\n" |cut -d: -f 1)
 CASES=$(cat $DATAFILE |grep -A3 -i  $a |sed "s/$/:/g" |tr -d "\n" |cut -d: -f 2)
